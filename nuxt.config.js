@@ -55,6 +55,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    '@nuxtjs/vuetify',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -65,7 +66,19 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    // baseURL: 'https://api.crow31415.net',
+    proxy: true,
+    prefix: '/garbages'
+  },
+  proxy: {
+    '/garbages/': {
+      target: 'https://api.crow31415.net',
+      pathRewrite: {
+        '^/garbages/': ''
+      }
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -84,7 +97,7 @@ export default {
       routes.push({
         name: 'custom',
         path: '*',
-        component: resolve(__dirname, 'components/error.vue')
+        component: resolve(__dirname, 'layouts/error.vue')
       })
     }
   },

@@ -1,18 +1,7 @@
 <template lang="pug">
-  footer.footer
-    .text
-      | Gomi List
+  div
+    v-footer(dark)
+      .container
+        p
+        | &copy; 2021 新しいチャネル(2)
 </template>
-
-<style lang="scss" scoped>
-.footer{
-  background-color: #89c7de;
-  color: #fff;
-  text-align: center;
-  margin-top: $footer-mar;
-}
-
-.text{
-  @extend .center
-}
-</style>

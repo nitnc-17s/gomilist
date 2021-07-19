@@ -1,3 +1,7 @@
 <template lang="pug">
-  nuxt
+  v-app
+    Header
+    v-main.main
+      nuxt
+    Footer
 </template>

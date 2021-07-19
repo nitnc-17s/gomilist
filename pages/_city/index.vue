@@ -71,7 +71,7 @@ export default class City extends Vue {
 <style lang="scss">
 .v-data-table {
   td {
-    background: #f0f8ff;
+    background: #E0E0E0;
   }
 
   tr{
@@ -83,7 +83,7 @@ export default class City extends Vue {
 
     &:hover{
       td{
-        background: #eee;
+        background: #BDBDBD;
       }
     }
   }

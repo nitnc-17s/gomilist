@@ -34,8 +34,8 @@
 import { Component, Vue, Watch } from 'nuxt-property-decorator'
 
 @Component({
-  async asyncData({ $axios, params, error }) {
-    let gomiList = await $axios.$get('/garbages', {params:{city:params.city}}).catch( e => error({ statusCode: 404, message: 'Post not found' }))
+  async asyncData({ $axios, params, error, env }) {
+    let gomiList = await $axios.$get(`${env.API_BASE_URL}/garbages`, {params:{city:params.city}}).catch( e => error({ statusCode: 404, message: 'Post not found' }))
     gomiList = gomiList.garbages
     return {
       gomiList

@@ -1,5 +1,9 @@
 const dartSass = require('sass')
 const fibers = require('fibers')
+require('dotenv').config()
+const {
+  API_BASE_URL
+} = process.env
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -62,22 +66,21 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/style-resources',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // baseURL: 'https://api.crow31415.net',
-    proxy: true,
-    prefix: '/garbages'
-  },
   proxy: {
-    '/garbages/': {
+    '/garbages': {
       target: 'https://api.crow31415.net',
       pathRewrite: {
         '^/garbages/': ''
       }
     }
+  },
+  axios: {
+    prefix: '/garbages'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -90,6 +93,10 @@ export default {
         }
       }
     }
+  },
+
+  env: {
+    API_BASE_URL: process.env.API_BASE_URL || ''
   },
 
   router: {

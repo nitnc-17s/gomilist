@@ -35,8 +35,8 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component({
-  async asyncData({ $axios, params }) {
-    const gomiData = await $axios.$get(`/garbages/${params.id}`)
+  async asyncData({ $axios, params,env }) {
+    const gomiData = await $axios.$get(`${env.API_BASE_URL}/garbages/${params.id}`)
     console.log(gomiData)
     return {
       gomiData

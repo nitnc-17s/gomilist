@@ -51,23 +51,15 @@ export default class City extends Vue {
       text: 'ゴミの名前',
       align: 'start',
       value: 'name',
-      filter: this.filterGomiName,
     },
-    { text: 'カテゴリ', value: 'category' },
-    { text: '分別方法', value: 'separation' },
+    { text: 'カテゴリ', value: 'category', filterable: false, },
+    { text: '分別方法', value: 'separation', filterable: false, },
   ]
   gomiList: any[] = []
 
   @Watch('gomiList')
   onLoad() {
     this.loading = false
-  }
-
-  /** methods() */
-  filterGomiName (value:string, search:string) {
-    return value != null &&
-      search != null &&
-      value.indexOf(search) !== -1
   }
 
   toLink(id:string){
